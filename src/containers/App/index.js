@@ -1,17 +1,27 @@
-import { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from '../Home/index';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useInjectReducer, useInjectSaga } from 'redux-injectors';
 
-class App extends Component{
-  render() {
+import Home from '../Home/index';
+import reducer from './reducer';
+import saga from './saga';
+const key = 'app';
+
+const App = () => {
+  useInjectSaga({
+    key: 'app',
+    saga: saga,
+  });
+  useInjectReducer({ key: key, reducer });
     return (
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <Switch>
+        <Route
+            path="/"
+            render={() => <Home />} />
+        </Switch>
       </Router>
     );
-  }
 }
 
 export default App;

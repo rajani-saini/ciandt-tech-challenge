@@ -1,5 +1,18 @@
-import { combineReducers } from 'redux';
+/* eslint-disable default-case */
+import produce from 'immer';
 
-const rootReducer = combineReducers({  });
+export const initialState = {
+  mounted: false,
+};
 
-export default rootReducer;
+
+const defaultReducer = (state = initialState, action) =>
+  produce(state, draft => {
+    switch (action.type) {
+      case 'APP_MOUNTED':
+        draft.mounted = true;
+        break;
+    }
+  });
+
+export default defaultReducer;

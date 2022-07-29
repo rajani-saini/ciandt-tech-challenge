@@ -1,4 +1,4 @@
-import { POKEMON_DATA, POKEMON_DATA_FAILURE, POKEMON_DATA_SUCCESS } from '../constants/actionTypes';
+import { POKEMON_DATA, POKEMON_DATA_FAILURE, POKEMON_DATA_SUCCESS } from './constants';
 
 const INITIAL_STATE = {
   pokemons: [],
